@@ -1,0 +1,25 @@
+<div>
+
+    <mat-dialog-content>
+        <h3 class="ion-padding-bottom" style="text-transform: capitalize;">{{data.type}} Request</h3>
+        <form [formGroup]="withdraw" *ngIf="showForm">
+            <div class="fullBox">
+                <h6 class="ion-padding-bottom">You can {{data.type}} upto € {{maxAmount == null ? 0 : maxAmount | number
+                    : '1.2-2'}}
+                </h6>
+
+                <ion-input label="{{data.type}} Amount" label-placement="floating" fill="outline" type="number"
+                    placeholder="Enter Amount" formControlName="withdraw_amount"></ion-input>
+            </div>
+
+
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <div class="buttonJustfy">
+            <ion-button color="light" type="submit" expand="block" (click)="dialogRef.close()">Cancel</ion-button>
+            <ion-button type="submit" expand="block" (click)="save()"
+                [disabled]="withdraw?.invalid || withdraw?.pristine">Submit</ion-button>
+        </div>
+    </mat-dialog-actions>
+</div>

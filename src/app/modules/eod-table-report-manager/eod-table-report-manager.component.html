@@ -1,0 +1,62 @@
+<ion-content class="ion-padding innerPage pagePadding">
+    <ion-refresher slot="fixed" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200" (ionRefresh)="handleRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ng-container *ngIf="!loading">
+        <ion-card *ngFor="let pl of gridData">
+            <ion-card-header>
+                <ion-card-subtitle>{{pl.date}} </ion-card-subtitle>
+                <ion-card-title [color]="getColor(pl)">
+                    <ion-text *ngIf="pl.pltype =='Withdrawal' || pl.pltype =='Contract Expired'">-</ion-text>
+                    <ion-text class="fw-bold">€ {{pl.plAccount | number : '1.2-2'}} </ion-text>
+                </ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content *ngIf="pl.pltype">
+                <ion-item lines="none">
+                    <ion-note slot="start">Transaction Type</ion-note>
+                    <p class="m-0">
+                        <ion-text *ngIf="pl.pltype !='walletManager'">{{ pl.account_no }},</ion-text>
+                        <ion-text *ngIf="pl.pltype !='wallet' && pl.pltype !='walletManager'">{{pl.pltype}}</ion-text>
+                        <ion-text *ngIf="pl.pltype =='wallet'">Balance accredited to wallet</ion-text>
+                        <ion-text *ngIf="pl.pltype =='walletManager'">Balance accredited to investors</ion-text>
+                    </p>
+                </ion-item>
+            </ion-card-content>
+            <ion-row class="cardfooter">
+                <ion-col class="text-center pIn-0">
+                    <ion-item lines="none">
+                        <ion-note class="pt-3p" slot="start">Equity</ion-note>
+                        <ion-text slot="end">
+                            <h5 class="m-0">€ {{pl.equity | number : '1.2-2'}} </h5>
+                        </ion-text>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-card>
+    </ng-container>
+
+    <ng-container *ngIf="loading">
+        <ion-card *ngFor="let item of [0,0,0,0,0,0,0]">
+            <ion-card-header>
+                <ion-card-subtitle>
+                    <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+                </ion-card-subtitle>
+                <ion-card-title>
+                    <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+                </ion-card-title>
+            </ion-card-header>
+
+            <ion-row class="cardfooter">
+                <ion-col class="text-center pIn-0">
+                    <ion-item lines="none">
+                        <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+                        <ion-text slot="end">
+                            <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+                        </ion-text>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-card>
+    </ng-container>
+</ion-content>

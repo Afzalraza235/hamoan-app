@@ -1,0 +1,103 @@
+<ion-content class="ion-padding innerPage pagePadding">
+    <ion-refresher slot="fixed" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200" (ionRefresh)="handleRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ng-container *ngIf="!loading">
+        <ion-card *ngFor="let data of gridData">
+            <ion-card-header>
+                <ion-card-subtitle> {{data.email}} </ion-card-subtitle>
+                <ion-card-title>
+                    <ion-text class="fw-bold"> {{data.first_name}} {{data.last_name}}</ion-text>
+                </ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content class="tradingContent noteWd45">
+                <ion-list lines="none">
+                    <ion-item>
+                        <ion-note>Investor Amount:</ion-note>
+                        <ion-text>
+                            <p>€ {{data.investment_amount | number : '1.2-2'}} </p>
+                        </ion-text>
+                    </ion-item>
+                    <ion-item>
+                        <ion-note>Investor Account:</ion-note>
+                        <ion-text>
+                            <p>{{data.account_no}} </p>
+                        </ion-text>
+                    </ion-item>
+                    <ion-item>
+                        <ion-note>Amount %:</ion-note>
+                        <ion-text>
+                            <p>{{data.profit_percentage}} </p>
+                        </ion-text>
+                    </ion-item>
+                    <ion-item>
+                        <ion-note>PF Ratio:</ion-note>
+                        <ion-text>
+                            <p>{{data.pf_ratio}} </p>
+                        </ion-text>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-note>Start Date:</ion-note>
+                        <ion-text>
+                            <p>{{data.investment_date}} </p>
+                        </ion-text>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-note>Created At:</ion-note>
+                        <ion-text>
+                            <p>{{data.created_at}} </p>
+                        </ion-text>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-note>Created By:</ion-note>
+                        <ion-text>
+                            <p>User10766 </p>
+                        </ion-text>
+                    </ion-item>
+                </ion-list>
+
+                <div class="ion-padding-top centerDiv">
+                    <ion-button color="success" fill="solid" (click)="changePass(data)">Change Password</ion-button>
+                </div>
+
+            </ion-card-content>
+        </ion-card>
+    </ng-container>
+
+    <ng-container *ngIf="loading">
+        <ion-card *ngFor="let item of [0,0,0,0,0,0,0]">
+            <ion-card-header>
+                <ion-card-subtitle>
+                    <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+                </ion-card-subtitle>
+                <ion-card-title>
+                    <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+                </ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content class="tradingContent">
+                <ion-grid class="p-0">
+                    <ion-row>
+                        <ion-col class="p-0">
+                            <ion-list lines="none">
+                                <ion-item>
+                                    <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+                                </ion-item>
+                            </ion-list>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-card-content>
+        </ion-card>
+    </ng-container>
+</ion-content>

@@ -1,0 +1,156 @@
+<ion-content class="pagePadding">
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-card routerLink="/global-exposure-manager">
+                    <ion-card-content>
+                        <ion-list lines="none">
+                            <ion-item>
+                                <ion-thumbnail slot="start">
+                                    <img class="custom-color-tint" src="assets/images/exposure.png" />
+                                </ion-thumbnail>
+                                <ion-text>
+                                    <h2>Investors Exposure</h2>
+                                </ion-text>
+                            </ion-item>
+                        </ion-list>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-card routerLink="/eod-table-report-manager">
+                    <ion-card-content>
+                        <ion-list lines="none">
+                            <ion-item>
+                                <ion-thumbnail slot="start">
+                                    <img class="custom-color-tint" src="assets/images/table.png" />
+                                </ion-thumbnail>
+                                <ion-text>
+                                    <h2>Daily P/L</h2>
+                                </ion-text>
+                            </ion-item>
+                        </ion-list>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-card routerLink="/trading-history-report-manager">
+                    <ion-card-content>
+                        <ion-list lines="none">
+                            <ion-item>
+                                <ion-thumbnail slot="start">
+                                    <img class="custom-color-tint" src="assets/images/trading-history.png" />
+                                </ion-thumbnail>
+                                <ion-text>
+                                    <h2>Trading History</h2>
+                                </ion-text>
+                            </ion-item>
+                        </ion-list>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+
+
+        <ion-row *ngIf="user.account_type == '1'">
+            <ion-col>
+                <ion-card routerLink="/investor-accounts">
+                    <ion-card-content>
+                        <ion-list lines="none">
+                            <ion-item>
+                                <ion-thumbnail slot="start">
+                                    <img class="custom-color-tint" src="assets/images/investor.png" />
+                                </ion-thumbnail>
+                                <ion-text>
+                                    <h2>Investors Accounts</h2>
+                                </ion-text>
+                            </ion-item>
+                        </ion-list>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="user.account_type == '1'">
+            <ion-col>
+                <ion-card routerLink="/pf-history">
+                    <ion-card-content>
+                        <ion-list lines="none">
+                            <ion-item>
+                                <ion-thumbnail slot="start">
+                                    <img class="custom-color-tint" src="assets/images/pf-history.png" />
+                                </ion-thumbnail>
+                                <ion-text>
+                                    <h2>Manager P/L</h2>
+                                </ion-text>
+                            </ion-item>
+                        </ion-list>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-card routerLink="/wallet">
+                    <ion-card-content>
+                        <ion-list lines="none">
+                            <ion-item>
+                                <ion-thumbnail slot="start">
+                                    <img class="custom-color-tint" src="assets/images/wallet.png" />
+                                </ion-thumbnail>
+                                <ion-text>
+                                    <h2>Wallet</h2>
+                                </ion-text>
+                            </ion-item>
+                        </ion-list>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="user.account_type == '1'">
+            <ion-col>
+                <ion-card routerLink="/requests">
+                    <ion-card-content>
+                        <ion-list lines="none">
+                            <ion-item>
+                                <ion-thumbnail slot="start">
+                                    <img class="custom-color-tint" src="assets/images/request.png" />
+                                </ion-thumbnail>
+                                <ion-text>
+                                    <h2>Requests</h2>
+                                </ion-text>
+                            </ion-item>
+                        </ion-list>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-card>
+                    <ion-card-content routerLink="/profile">
+                        <ion-list lines="none">
+                            <ion-item>
+                                <ion-thumbnail slot="start">
+                                    <img class="custom-color-tint" src="assets/images/user.png" />
+                                </ion-thumbnail>
+                                <ion-text>
+                                    <h2>Profile</h2>
+                                </ion-text>
+                            </ion-item>
+                        </ion-list>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

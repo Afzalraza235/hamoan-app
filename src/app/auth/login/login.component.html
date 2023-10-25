@@ -1,0 +1,33 @@
+<div class="loginPage">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <div class="ion-text-center logo-Img">
+          <ion-img class="darkModeImgs" src="../assets/images/hamoan_logo.png"></ion-img>
+        </div>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form class="fullCenter" [formGroup]="loginForm">
+
+        <div class="ion-padding-top ion-padding-bottom">
+          <p class="loginDetailsText">Enter your login details</p>
+          <div class="ion-padding-top ion-padding-bottom">
+            <ion-input label="Email" label-placement="floating" fill="outline" type="text"
+              placeholder="Enter your Email" formControlName="email"></ion-input>
+          </div>
+          <div>
+            <ion-input label="Password" label-placement="floating" fill="outline" type="password"
+              placeholder="Enter your Password" formControlName="password"></ion-input>
+          </div>
+        </div>
+        <div class="ion-padding-top">
+          <ion-button (click)="login()" type="submit" expand="block" [disabled]="loginForm.invalid">Login</ion-button>
+        </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+
+</div>

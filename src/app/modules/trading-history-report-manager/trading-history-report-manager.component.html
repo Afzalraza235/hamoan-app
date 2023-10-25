@@ -1,0 +1,100 @@
+<ion-content class="ion-padding innerPage pagePadding">
+    <ion-refresher slot="fixed" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200" (ionRefresh)="handleRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ng-container *ngIf="!loading">
+        <ion-card *ngFor="let th of gridData">
+            <ion-card-header>
+                <ion-card-subtitle> {{th.order_created}} </ion-card-subtitle>
+                <ion-card-title>
+                    <ion-text class="fw-bold"># {{th.order_id}} </ion-text>
+                </ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content class="tradingContent">
+                <ion-grid class="p-0">
+                    <ion-row>
+                        <ion-col class="p-0">
+                            <ion-list lines="none">
+                                <ion-item>
+                                    <ion-note>Symbol:</ion-note>
+                                    <ion-text>
+                                        <p>{{th.symbol}} </p>
+                                    </ion-text>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-note>Open Price:</ion-note>
+                                    <ion-text>
+                                        <p>{{th.open_price | number : '1.2-2'}} </p>
+                                    </ion-text>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-note>Currency:</ion-note>
+                                    <ion-text>
+                                        <p>{{th.currency}} </p>
+                                    </ion-text>
+                                </ion-item>
+                            </ion-list>
+                        </ion-col>
+
+                        <ion-col class="p-0">
+                            <ion-list lines="none">
+                                <ion-item>
+                                    <ion-note>Type:</ion-note>
+                                    <ion-text>
+                                        <p>{{th.type}} </p>
+                                    </ion-text>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-note>Closed Price:</ion-note>
+                                    <ion-text>
+                                        <p>{{th.closed_price | number : '1.2-2'}} </p>
+                                    </ion-text>
+                                </ion-item>
+                                <ion-item *ngIf="user.account_type === '1'">
+                                    <ion-note>Profit:</ion-note>
+                                    <ion-text>
+                                        <p>€ {{th.profit | number : '1.2-2'}} </p>
+                                    </ion-text>
+                                </ion-item>
+                            </ion-list>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-card-content>
+        </ion-card>
+    </ng-container>
+
+    <ng-container *ngIf="loading">
+        <ion-card *ngFor="let item of [0,0,0,0,0,0,0]">
+            <ion-card-header>
+                <ion-card-subtitle>
+                    <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+                </ion-card-subtitle>
+                <ion-card-title>
+                    <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+                </ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content class="tradingContent">
+                <ion-grid class="p-0">
+                    <ion-row>
+                        <ion-col class="p-0">
+                            <ion-list lines="none">
+                                <ion-item>
+                                    <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+                                </ion-item>
+                            </ion-list>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-card-content>
+        </ion-card>
+    </ng-container>
+</ion-content>

@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'hamoan-app',
+  appId: 'com.portalhamoan.hamoan',
+  appName: 'Hamoan',
   webDir: 'www',
   server: {
     androidScheme: 'https'

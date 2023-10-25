@@ -1,0 +1,46 @@
+<ion-content class="ion-padding profilePage pagePadding">
+    <h3 class="ion-padding-bottom">Manage Profile</h3>
+    <form [formGroup]="userForm" *ngIf="showForm">
+        <ion-input label="First Name" label-placement="floating" fill="outline" type="text"
+            placeholder="Enter your First Name" formControlName="first_name"></ion-input>
+
+        <ion-input label="Last Name" label-placement="floating" fill="outline" type="text"
+            placeholder="Enter your Last Name" formControlName="last_name"></ion-input>
+
+        <ion-input label="Email" label-placement="floating" fill="outline" type="text" placeholder="Enter your Email"
+            formControlName="email"></ion-input>
+
+        <div class="passwordBox">
+            <ion-input label="Password" label-placement="floating" fill="outline" [type]="hide ? 'password' : 'text'"
+                placeholder="Enter your Password" formControlName="password"></ion-input>
+            <ion-icon class="p-abs-r" [name]="hide ? 'eye' : 'eye-off-outline'" aria-hidden="true"
+                (click)="hide = !hide"></ion-icon>
+        </div>
+
+
+        <ion-input label="Address" label-placement="floating" fill="outline" type="text" placeholder="Enter your Adress"
+            formControlName="address"></ion-input>
+
+        <ion-input label="Phone" label-placement="floating" fill="outline" type="text" placeholder="Enter your Phone #"
+            formControlName="phone"></ion-input>
+
+        <ion-input label="Investment Amount" label-placement="floating" fill="outline" type="text"
+            formControlName="investment_amount"></ion-input>
+
+        <ion-input label="Investor Account" label-placement="floating" fill="outline" type="text"
+            formControlName="account_no"></ion-input>
+
+        <ion-input label="Start Date" label-placement="floating" fill="outline" type="text"
+            formControlName="investment_date"></ion-input>
+
+        <ion-input label="Duration" label-placement="floating" fill="outline" type="text"
+            formControlName="term"></ion-input>
+
+        <ion-input label="End Date" label-placement="floating" fill="outline" type="text"
+            formControlName="endDate"></ion-input>
+    </form>
+    <div class="w-100 d-flex justify-content-end">
+        <ion-button type="submit" expand="block" (click)="save()"
+            [disabled]="userForm?.invalid || userForm?.pristine">Save</ion-button>
+    </div>
+</ion-content>

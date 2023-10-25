@@ -24,3 +24,220 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+@font-face {
+    font-family: "Montserrat";
+    src: url('assets/font/Montserrat-Regular.ttf');
+}
+@font-face {
+    font-family: "Montserrat-bold";
+    src: url('assets/font/Montserrat-Bold.ttf');
+}
+.innerPage ion-item::part(native) {
+    padding-left: unset;
+    padding-right: unset !important;
+}
+
+* {
+  --ion-font-family:  'Montserrat'!important;
+  font-family:  'Montserrat' !important;
+  font-weight: 500;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Montserrat-bold"!important;
+    margin: 0!important;
+    // font-weight: 700!important;
+}
+.fw-bold {
+    font-weight: 700!important;
+}
+.logoSmNav {
+    width: 50px;
+}
+.customNav {
+    display: flex;
+    padding: 0 0 0 6px;
+    background-color: #fff;
+}
+.layout ion-header{
+    height: 56px;
+}
+.page-wrapper {
+    padding-top: 56px;
+}
+.userInfo {
+    padding: 0 0 0 16px;
+    margin: -10px 0 0px;
+}
+.userInfo h5 {
+    display: flex;
+    align-items: center;
+}
+.userInfo h5 ion-icon{
+    padding-right: 5px;
+}
+.divider {
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+    position: relative;
+}
+.logoutBtn {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    z-index: 999;
+}
+
+.loginPage {
+    display: flex;
+    align-items: center;
+    background-color: #222165;
+    background-image: url('assets/images/hamoan_bkg.jpg');
+    height: 100vh;
+    width: 100%;
+}
+.loginPage ion-card {
+    width: 100%;
+    background-color: #fff;
+}
+.loginPage ion-button {
+    --background: #222165;
+    --background-hover: #222165;
+    --background-activated: #222165;
+    --background-focused: #222165;
+    --color: #fff;
+    --border-radius: 30px;
+}
+.logo-Img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    ion-img {
+        width: 200px;
+    }
+}
+.custom-color-tint {
+    filter: hue-rotate(250deg) saturate(200%);
+}
+
+.innerPage ion-item {
+    --padding-end: 0px;
+    --inner-padding-end: 0px;
+    border: none;
+    --min-height: auto!important;
+  }
+  .innerPage ion-note {
+    padding: 0!important;
+    margin-inline-end: 10px!important;
+  }
+  .innerPage p {
+    font-size: 0.6875rem;
+    font-weight: 700;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .m-0 {
+    margin: 0!important;
+  }
+  .cardfooter{
+    padding-inline: 16px;
+    padding-bottom: 10px;
+  }
+  .pIn-0 {
+    padding-inline: 0px !important;
+  }
+  ion-note.pt-3p {
+    padding-top: 3px !important;
+  }
+  .p-0 {
+    padding: 0!important;
+  }
+  .innerPage ion-list {
+    padding: 0;
+  }
+  .innerPage .tradingContent p{
+    font-size: 0.8rem;
+  }
+  .innerPage .tradingContent ion-note{
+    font-size: 0.8rem;
+  }
+  .innerPage .tradingContent.noteWd45 ion-note{
+    width: 45%;
+  }
+  .flexTitle {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+  }
+
+  .profilePage ion-input {
+    margin-bottom: 25px;
+  }
+  .p-abs-r {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 999;
+}
+.passwordBox {
+    position: relative;
+}
+.m-rl-0 {
+    margin-left: 0!important;
+    margin-right: 0!important;
+}
+.walletMoney {
+    display: flex;
+    flex-direction: column;
+}
+.centerDiv {
+    display: flex;
+    justify-content: center;
+}
+.buttonJustfy{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+.af-loader {
+    position: fixed;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.2);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer {
+    bottom: 0;
+    color: #67757c;
+    left: 0px;
+    padding: 17px 15px;
+    position: absolute;
+    right: 0;
+    border-top: 1px solid rgba(120,130,140,.13);
+    background: #ffffff
+}
+.pagePadding {
+    top: 60px!important;
+    --offset-bottom: -120px!important;
+}
+@media (prefers-color-scheme: dark) {
+    .customNav{
+        background-color: #1f1f1f;
+    }
+    .footer {
+        background-color: #1f1f1f;
+        color: #fff;
+    }
+  }

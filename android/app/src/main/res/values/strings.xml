@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Hamoan</string>
+    <string name="title_activity_main">Hamoan</string>
+    <string name="package_name">com.portalhamoan.hamoan</string>
+    <string name="custom_url_scheme">com.portalhamoan.hamoan</string>
+</resources>

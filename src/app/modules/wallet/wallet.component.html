@@ -1,0 +1,112 @@
+<ion-content class="ion-padding innerPage pagePadding" *ngIf="user && !loading && monthlyProfit !== undefined">
+  <ion-refresher slot="fixed" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card class="m-rl-0">
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img class="custom-color-tint" src="assets/images/get-money.png" />
+          </ion-thumbnail>
+          <div class="walletMoney">
+            <ion-text>
+              <h3>Profit Amount</h3>
+            </ion-text>
+            <ion-text [color]="user.profit === null || user.profit =='0' ? 'danger' : 'success'">
+              <h2>€ {{user.profit === null ? '0.00' : user?.profit | number : '1.2-2'}}</h2>
+            </ion-text>
+          </div>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="m-rl-0" *ngIf="user.account_type != '1'">
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img class="custom-color-tint" src="assets/images/get-money.png" />
+          </ion-thumbnail>
+          <div class="walletMoney">
+            <ion-text>
+              <h3>Re-invest Amount</h3>
+            </ion-text>
+            <ion-text [color]="user.re_invest_amount === null || user.re_invest_amount =='0' ? 'danger' : 'success'">
+              <h2>€ {{user.re_invest_amount === null ? '0.00' : user?.re_invest_amount | number : '1.2-2'}} </h2>
+            </ion-text>
+          </div>
+
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="m-rl-0">
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img class="custom-color-tint" src="assets/images/get-money.png" />
+          </ion-thumbnail>
+          <div class="walletMoney">
+            <ion-text>
+              <h3>Total Generated Profit</h3>
+            </ion-text>
+            <ion-text [color]="user.total_profit === null || user.total_profit =='0' ? 'danger' : 'success'">
+              <h2>€ {{user.total_profit === null ? '0.00' : user?.total_profit | number : '1.2-2'}} </h2>
+            </ion-text>
+          </div>
+
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="ion-padding centerDiv">
+    <ion-button id="present-alert" color="danger" fill="solid" (click)="openWithDrawModal()"
+      [disabled]="!validate() && lastMonthlyProfit < 1">Withdraw</ion-button>
+    <ion-button color="success" fill="solid" (click)="openReinvestModal()"
+      [disabled]="!validate() && lastMonthlyProfit < 1" *ngIf="user.account_type != '1'">Re-Invest</ion-button>
+  </div>
+
+  <ion-text>
+    <p *ngIf="user.account_type != '1' && !validate() && lastMonthlyProfit < 1">Next withdrawal date:
+      {{nextMonth | date}}</p>
+  </ion-text>
+
+  <h5 class="ion-padding-top" *ngIf="requests?.length > 0">Payment History</h5>
+  <div class="content" *ngIf="requests?.length > 0">
+    <div class="co-payment-history-web">
+      <div class="payment-history card">
+        <table class="table">
+          <tr class="table__row table__row--heading">
+            <th class="table__cell">Date</th>
+            <th class="table__cell">Amount</th>
+            <th class="table__cell">Transaction Type</th>
+            <th class="table__cell">Status</th>
+            <th class="table__cell table__cell--details"></th>
+          </tr>
+          <tr class="table__row" *ngFor="let request of requests">
+            <td class="table__cell table__cell--center-items">
+              {{request.withdraw_date}}
+            </td>
+            <td class="table__cell">€ {{request.withdraw_amount}} </td>
+            <td class="table__cell">{{request.transaction_type}} </td>
+            <td class="table__cell"
+              [ngClass]="{'green': request.withdraw_status =='Approved', 'red': request.withdraw_status =='Rejected'}">
+              {{request.withdraw_status}} </td>
+            <td class="table__cell"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</ion-content>
+
+<div class="af-loader" *ngIf="loading">
+  <ion-spinner name="lines"></ion-spinner>
+</div>
