@@ -10,7 +10,7 @@ import { AppSettings, AuthenticationService, HelperService } from 'src/app/servi
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
+  public loading: boolean = false;
   loginForm: FormGroup;
   public UserLoginKey: any;
 
@@ -30,13 +30,18 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    let prevEmail = localStorage.getItem('loginEmail');
+    let prevPass = localStorage.getItem('loginPass');
+    
     this.loginForm = this._FB.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      email: [prevEmail ? prevEmail : '', [Validators.required, Validators.email]],
+      password: [prevPass? prevPass : '', Validators.required],
+      remember: [prevEmail ? true : false]
     })
   }
 
   login() {
+    this.loading = true;
     let url = AppSettings.API_ENDPOINT + 'admin.php';
     let data = new FormData();
     data.append("action", "login");
@@ -45,12 +50,24 @@ export class LoginComponent implements OnInit {
 
     this.helperService.httpPostRequests(url, data).then(user => {
       if (!user.error) {
+        if (this.loginForm.controls.remember.value) {
+          localStorage.setItem('loginEmail', this.loginForm.controls.email.value);
+          localStorage.setItem('loginPass', this.loginForm.controls.password.value);
+        }
+        else {
+          localStorage.clear();
+        }
+        this.loading = false;
         this.authenticationService.setCurrentUserValue(user[0]);
         this.presentToast('Successfully Login');
         this.router.navigate(['/home']);
       } else {
+        this.loading = false;
         this.presentToast(user.error);
       }
+    }, error => {
+      this.loading = false;
+      this.presentToast('Something went wrong');
     })
   }
 

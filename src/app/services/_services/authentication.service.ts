@@ -61,7 +61,7 @@ export class AuthenticationService {
       let data         = {};
           data['user'] = user;
       let timeout      = new Date();
-      timeout.setHours(timeout.getHours() + 12); // 12 hrs of session
+      timeout.setHours(timeout.getHours() + 24); // 12 hrs of session
       data['sessionTimeout'] = timeout.toString();
       try {
         localStorage.setItem('currentUser', JSON.stringify(data));

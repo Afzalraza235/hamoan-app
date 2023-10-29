@@ -8,14 +8,15 @@
                             <ion-icon size="large" name="log-out-outline" aria-hidden="true"></ion-icon>
                         </div>
                         <ion-list-header>
-                            <h3><ion-icon name="person-outline" aria-hidden="true"></ion-icon> {{user.first_name}} </h3>
+                            <h3><ion-icon name="person-outline" aria-hidden="true"></ion-icon> {{user?.first_name}}
+                            </h3>
                         </ion-list-header>
                         <div class="userInfo">
                             <ion-text>
-                                <h5><ion-icon name="mail-outline" aria-hidden="true"></ion-icon> {{user.email}}</h5>
+                                <h5><ion-icon name="mail-outline" aria-hidden="true"></ion-icon> {{user?.email}}</h5>
                             </ion-text>
                             <ion-text>
-                                <h5><ion-icon name="wallet-sharp" aria-hidden="true"></ion-icon> {{user.account_no}}
+                                <h5><ion-icon name="wallet-sharp" aria-hidden="true"></ion-icon> {{user?.account_no}}
                                 </h5>
                             </ion-text>
                         </div>

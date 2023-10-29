@@ -30,7 +30,7 @@ export class LayoutComponent implements OnInit {
   }
   checkUserLogin() {
     this.user = this.authenticateService.get_currentUserValue();
-    if (this.user.account_type == '1') {
+    if (this.user?.account_type == '1') {
       this.appPages = [{ title: 'Home', url: '/home', icon: 'home' },
       { title: 'Investors Exposure', url: '/global-exposure-manager', icon: 'bar-chart-outline' },
       { title: 'Daily P/L', url: '/eod-table-report-manager', icon: 'cash-outline' },

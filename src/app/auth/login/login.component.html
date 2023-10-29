@@ -14,12 +14,15 @@
         <div class="ion-padding-top ion-padding-bottom">
           <p class="loginDetailsText">Enter your login details</p>
           <div class="ion-padding-top ion-padding-bottom">
-            <ion-input label="Email" label-placement="floating" fill="outline" type="text"
+            <ion-input mode="md" label="Email" label-placement="floating" fill="outline" type="text"
               placeholder="Enter your Email" formControlName="email"></ion-input>
           </div>
           <div>
-            <ion-input label="Password" label-placement="floating" fill="outline" type="password"
+            <ion-input mode="md" label="Password" label-placement="floating" fill="outline" type="password"
               placeholder="Enter your Password" formControlName="password"></ion-input>
+          </div>
+          <div class="ion-padding-top">
+            <ion-checkbox labelPlacement="end" formControlName="remember">Remember me</ion-checkbox>
           </div>
         </div>
         <div class="ion-padding-top">
@@ -30,4 +33,8 @@
   </ion-card>
 
 
+</div>
+
+<div class="af-loader" *ngIf="loading">
+  <ion-spinner name="lines"></ion-spinner>
 </div>

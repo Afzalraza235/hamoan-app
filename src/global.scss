@@ -82,6 +82,9 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 10px;
     position: relative;
 }
+.ios .divider {
+  margin-top: 30px;
+}
 .logoutBtn {
     position: absolute;
     right: 20px;
@@ -158,8 +161,12 @@ h1, h2, h3, h4, h5, h6 {
   .innerPage ion-list {
     padding: 0;
   }
+  .innerPage .tradingContent ion-item{
+    --padding-bottom: 12px!important;
+  }
   .innerPage .tradingContent p{
     font-size: 0.8rem;
+    margin: 0;
   }
   .innerPage .tradingContent ion-note{
     font-size: 0.8rem;
@@ -232,12 +239,93 @@ h1, h2, h3, h4, h5, h6 {
     top: 60px!important;
     --offset-bottom: -120px!important;
 }
+
+.content {
+  background-color: #fff;
+  padding: 0 0;
+  display: flex;
+}
+.table {
+  width: 100%;
+}
+.table__row {
+  transition: background-color 0.2s ease-in;
+  border-bottom: 1px solid rgba(215, 215, 215, 0.4);
+  font-size: .75rem;
+} 
+.table__row--heading {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: .625rem;
+}
+.table__cell {
+  color: #323948;
+  text-align: center;
+  padding: 0.625rem 0;
+}
+.table__cell--center-items>* {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.green {
+  color: #149331;
+}
+.red {
+  color: #ff5959;
+}
+.co-payment-history-web {
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+ion-checkbox::part(container) {
+  border-radius: 6px;
+  border: 2px solid #222165;
+}
+ion-checkbox {
+  --size: 32px;
+  --checkbox-background: transparent;
+  --checkbox-background-checked: #222165;
+}
+
+.header-background {
+  backdrop-filter: none;
+}
+.ios ion-toolbar {
+  --min-height: 56px;
+  --border-width: 0px!important;
+}
+.ios .customNav {
+  background-color: #f7f7f7;
+}
+ion-menu-button {
+  --color: #000;
+}
 @media (prefers-color-scheme: dark) {
     .customNav{
         background-color: #1f1f1f;
     }
+    .ios .customNav {
+      background-color: #1f1f1f;
+    }
+    ion-menu-button {
+      --color: #fff;
+    }
     .footer {
         background-color: #1f1f1f;
         color: #fff;
+    }
+    .ios ion-item::part(native){
+      background-color: #1c1c1d !important;
+    }
+    .content {
+      background-color: #1c1c1d;
+    }
+    .table__cell {
+      color: #fff;
+    }
+    .ios ion-toolbar {
+      --background: #1f1f1f;
     }
   }
